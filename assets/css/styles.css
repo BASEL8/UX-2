@@ -31,6 +31,21 @@ align-items: center;
 .list-group-item{
     margin : 5px 0;
 }
-#start:focus,.list-group-item:focus ,a:focus,button:focus,.radio label span:focus,#questions h6:focus{
+.radio label input[type=radio], label.radio-inline input[type=radio] {
+    position: absolute;
+    left: -6px;
+    z-index: -1;
+    width: 2px;
+    height: 2px;
+    margin: 5px;
+    overflow: hidden;
+    pointer-events: none;
+    /* opacity: 0; */
+}
+#start:focus,.list-group-item:focus ,a:focus,button:focus,#questions h6:focus{
     outline: 2px solid #009688;
+}
+.radio label input:focus ~ span{
+    outline: 2px solid #009688;
+    outline-offset: -5px;
 }
