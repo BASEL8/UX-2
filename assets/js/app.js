@@ -61,7 +61,7 @@ function gameScreen() {
         model.gamesPlayed += 1;
         $('#questions').html(' ');
         $(this).hide()
-        $.get('https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple', function (data) {
+        $.get('https://opentdb.com/api.php?amount=4&category=12&difficulty=easy&type=multiple', function (data) {
                 data.results.forEach((d, i) => {
                     let allAnswer = d.incorrect_answers;
                     allAnswer.splice(Math.floor((Math.random() * allAnswer.length)), 0, d.correct_answer)
@@ -97,20 +97,6 @@ function gameScreen() {
                 $('#questions').parent().show()
             })
             .then(function () {
-                $('.answers input').change(function (e) {
-                    let radioValue = $(this);
-                    let mainParent = $(this).closest('.answers');
-                    model.data.forEach(d => {
-                        if (d.id == mainParent.attr('id')) {
-                            if (radioValue.val() == d.correct) {
-                                radioValue.siblings().addClass('done');
-                                console.log()
-                            } else {
-                                radioValue.siblings().addClass('wrong');
-                            }
-                        }
-                    })
-                })
                 $('#submitBtn').click(function (e) {
                     e.preventDefault();
                     if ($("#GameScreen input:checked").length === model.data.length) {
@@ -119,10 +105,12 @@ function gameScreen() {
                         if(v.value===model.data[i].correct){
                             model.correctAnswers += 1;
                             model.currentCorrectAnswers += 1;
+                            $(v).siblings().addClass('done');                            
                         }else{
                             model.incorrectAnswers += 1;
                             model.currentIncorrectAnswers += 1;
-
+                            $(v).siblings().addClass('wrong');
+                            $(v).closest('.answers').find('input').filter(function() { return this.value == model.data[i].correct}).parent().css('color','rgb(0, 177, 0)')
                         }}
                       })
 
