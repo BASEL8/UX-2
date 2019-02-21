@@ -77,7 +77,8 @@ function gameScreen() {
                 model.data.forEach((q, i) => {
                     $('#questions').append(
                         `  
-                <h6>Question-${i+1} : ${q.question}</h6>
+                <div class="question">
+                <h6 tabindex="0">Question-${i+1} : ${q.question}</h6>
                 <div class="form-group answers" id=${q.id}>
                 ${q.allAnswer.map((a)=>{
                     return ` 
@@ -88,8 +89,10 @@ function gameScreen() {
                  ${a}
                 </label>
               </div>
+              
                     `
                 }).join('')}
+              </div>
               </div>
            `
                     )

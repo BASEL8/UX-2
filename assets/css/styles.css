@@ -42,10 +42,13 @@ align-items: center;
     pointer-events: none;
     /* opacity: 0; */
 }
-#start:focus,.list-group-item:focus ,a:focus,button:focus,#questions h6:focus{
+#start:focus,.list-group-item:focus ,a:focus,button:focus,#questions h6:focus,.question:focus-within{
     outline: 2px solid #009688;
 }
 .radio label input:focus ~ span{
     outline: 2px solid #009688;
     outline-offset: -5px;
+}
+.question{
+    padding: 0px 10px;
 }
