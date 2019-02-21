@@ -61,7 +61,7 @@ function gameScreen() {
         model.gamesPlayed += 1;
         $('#questions').html(' ');
         $(this).hide()
-        $.get('https://opentdb.com/api.php?amount=4&category=12&difficulty=easy&type=multiple', function (data) {
+        $.get('https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple', function (data) {
                 data.results.forEach((d, i) => {
                     let allAnswer = d.incorrect_answers;
                     allAnswer.splice(Math.floor((Math.random() * allAnswer.length)), 0, d.correct_answer)
